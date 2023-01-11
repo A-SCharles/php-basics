@@ -7,7 +7,8 @@
     <title>php basics</title>
 </head>
 <body>
-        
+
+
     <?php
 
     // php data types
@@ -26,6 +27,7 @@
         var_dump($decimal); 
         echo "<br>";
         echo $arraySyntax ,"<br>"; 
+        echo "Use count() to get length of array. <br>"; 
         var_dump($array);
     
     // php var_dump
@@ -57,11 +59,11 @@
     // php function 
     echo "<h2><u>php Functions </u></h2><br>";
 
-        $functionSyntax = "Function Syntax: function testT('$'bruh, '$'bruh2) {
-        echo 'I am '$'bruh and '$'bruh2';
-         };
-        testT('James', 'Jesse');  
-        <br>";
+        $functionSyntax = "Function Syntax: <br> function testT('$'bruh, '$'bruh2) { <br>
+        echo 'I am '$'bruh and '$'bruh2'; <br>
+         }; <br>
+        testT('James', 'Jesse'); <br>  
+        ";
         
 
         function testT($bruh, $bruh2) {
@@ -73,9 +75,34 @@
 
         //  random items from an array 
         $input = array("Neo", "Morpheus", "Trinity", "Cypher", "Tank");
-        $rand_keys = array_rand($input, 2);
-        echo $input[$rand_keys[0]] . "\n";
-        echo $input[$rand_keys[1]] . "\n";
+        $rand_keys = array_rand($input, count($input));
+        for ($i = 0; $i < count($input); $i++){
+        echo $input[$rand_keys[$i]] . "\n";
+        }
+        
+        
     ?>
+
+           
+    <form method="GET" style="padding: 20px;">
+    <h2>input</h2>
+        <input type="text" name="person" id="person">
+        <button>Submit</button>
+    </form>
+
+    <?php 
+        // input validation    
+        // removing an item from the array if a value is given.
+        var_dump($input = \array_filter($input , static function ($v){
+            // $name = $_GET['person'];
+            $name = "Morpheus";
+            return $v != $name;
+        }));
+
+        array_values($input);
+    ?>
+
+
+
 </body>
 </html>
